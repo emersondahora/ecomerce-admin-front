@@ -55,13 +55,12 @@ export const Container = styled.div<ContainerProps>`
     line-height: 40px;
   }
   > svg {
-    margin-right: 16px;
+    margin-right: 10px;
   }
 `;
 
 export const Error = styled(Tooltip)`
   height: 20px;
-  margin-left: 16px;
   svg {
     margin: 0px;
     color: #c53030;

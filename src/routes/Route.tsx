@@ -13,6 +13,7 @@ import { useAuth } from '../hooks/auth';
 interface RouteProps extends ReactDOMRouteProps {
   isPrivate?: boolean;
   component: React.ComponentType;
+  basePage?: string;
 }
 
 const Route: React.FC<RouteProps> = ({

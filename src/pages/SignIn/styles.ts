@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+import ButtonComponent from '../../components/Button';
+
+export const Button = styled(ButtonComponent)`
+  width: 100%;
+  margin-top: 16px;
+`;
+
 export const Container = styled.div`
   width: 100%;
   max-width: 400px;

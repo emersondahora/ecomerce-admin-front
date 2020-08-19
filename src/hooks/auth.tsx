@@ -5,9 +5,11 @@ import api from '../services/api';
 interface User {
   id: string;
   name: string;
+  short_name?: string;
   email: string;
   avatar_url: string;
   is_admin: boolean;
+  created_at: string;
 }
 
 interface SignInCredentials {
@@ -44,6 +46,11 @@ export const AuthProvider: React.FC = ({ children }) => {
     const response = await api.post('sessions', { email, password });
 
     const { token, user } = response.data;
+
+    const names = user.name.split(' ');
+    user.short_name = `${names[0]} ${
+      names.length > 1 ? names[names.length - 1] : ''
+    }`;
 
     localStorage.setItem('@AdminStore:token', token);
     localStorage.setItem('@AdminStore:user', JSON.stringify(user));
