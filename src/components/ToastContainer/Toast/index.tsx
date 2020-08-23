@@ -30,6 +30,7 @@ const Toast: React.FC<ToastProps> = ({ message, style }) => {
       clearTimeout(timer);
     };
   }, [message, removeToast]);
+
   return (
     <Container
       type={message.type}

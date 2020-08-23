@@ -10,9 +10,9 @@ import { IconBaseProps } from 'react-icons';
 import { FiAlertCircle } from 'react-icons/fi';
 import { useField } from '@unform/core';
 
-import { Container, Error } from './styles';
+import { Container, Error, ErrorMessege, UpperContainer } from '../styles';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   containerStyle?: CSS.Properties<string | number>;
   icon?: React.ComponentType<IconBaseProps>;
@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({
   icon: Icon,
   ...props
 }) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
   const { fieldName, defaultValue, error, registerField } = useField(name);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -41,27 +41,30 @@ const Input: React.FC<InputProps> = ({
     if (!propsIsFocused) setIsFilled(!!inputRef.current?.value);
   }, []);
   return (
-    <Container
-      style={containerStyle}
-      isErrored={!!error}
-      isFocused={isFocused}
-      isFilled={isFilled}
-    >
-      <input
-        onFocus={() => handleInputBlurOrFocus(true)}
-        onBlur={() => handleInputBlurOrFocus(false)}
-        defaultValue={defaultValue}
-        {...props}
-        name={name}
-        ref={inputRef}
-      />
-      {Icon && <Icon />}
-      {error && (
-        <Error title={error}>
-          <FiAlertCircle />
-        </Error>
-      )}
-    </Container>
+    <UpperContainer>
+      <Container
+        style={containerStyle}
+        isErrored={!!error}
+        isFocused={isFocused}
+        isFilled={isFilled}
+      >
+        {Icon && <Icon />}
+        <textarea
+          onFocus={() => handleInputBlurOrFocus(true)}
+          onBlur={() => handleInputBlurOrFocus(false)}
+          defaultValue={defaultValue}
+          {...props}
+          name={name}
+          ref={inputRef}
+        />
+        {error && (
+          <Error title={error}>
+            <FiAlertCircle />
+          </Error>
+        )}
+      </Container>
+      {error && <ErrorMessege>{error}</ErrorMessege>}
+    </UpperContainer>
   );
 };
 

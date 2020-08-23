@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { FiMenu } from 'react-icons/fi';
+import { FiMenu, FiLogOut, FiUser } from 'react-icons/fi';
 import { format, parseISO } from 'date-fns';
 
 import { useAuth } from '../../hooks/auth';
 
-import { Container, Title, Nav, Profile, ProfileInfo } from './styles';
+import {
+  Container,
+  Title,
+  Nav,
+  Profile,
+  ProfileInfo,
+  ProfileInfoGlass,
+} from './styles';
 import DefaultProfile from '../../assets/profile.png';
-import Button from '../Button';
+import Button from '../Form/Button';
 
 const Header: React.FC = () => {
   const [showProfileInfo, setShowProfileInfo] = useState(false);
@@ -38,20 +45,28 @@ const Header: React.FC = () => {
           {user.short_name}
         </Profile>
         {showProfileInfo && (
-          <ProfileInfo>
-            <img
-              src={user.avatar_url || DefaultProfile}
-              alt="Emerson Oliveira da Hora"
-            />
-            <span>{user.name}</span>
-            <small>{memberSince}</small>
-            <div>
-              <Button onClick={() => alert('Em desenvolvimento.')}>
-                Perfil
-              </Button>
-              <Button onClick={signOut}>Sair</Button>
-            </div>
-          </ProfileInfo>
+          <>
+            <ProfileInfoGlass onClick={() => setShowProfileInfo(false)} />
+            <ProfileInfo>
+              <img
+                src={user.avatar_url || DefaultProfile}
+                alt="Emerson Oliveira da Hora"
+              />
+              <span>{user.name}</span>
+              <small>{memberSince}</small>
+              <div>
+                <Button
+                  onClick={() => alert('Em desenvolvimento.')}
+                  icon={FiUser}
+                >
+                  Perfil
+                </Button>
+                <Button onClick={signOut} icon={FiLogOut}>
+                  Sair
+                </Button>
+              </div>
+            </ProfileInfo>
+          </>
         )}
       </Nav>
     </Container>

@@ -1,16 +1,12 @@
 import React from 'react';
-import { RouteProps as ReactDOMRouteProps, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiBriefcase, FiUser, FiPackage } from 'react-icons/fi';
 
-import Button from '../../components/Button';
 import Header from '../../components/Header';
 
 import { Container, Wrapper, Menu, Content, Footer } from './styles';
 
-import { useAuth } from '../../hooks/auth';
-
 const DefaultLayout: React.FC = ({ children }) => {
-  const { signOut } = useAuth();
   return (
     <Container>
       <Header />

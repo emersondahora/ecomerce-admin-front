@@ -3,6 +3,7 @@ import { shade } from 'polished';
 
 type ButtonProps = {
   variant?: 'default' | 'red' | 'green' | 'blue';
+  size?: 'normal' | 'small';
 };
 
 const styleTypeVariants = {
@@ -10,10 +11,10 @@ const styleTypeVariants = {
     background: #d2d6de;
     color: #666666;
     &:hover {
-      background: ${shade(0.2, '#d2d6de')};
+      background: ${shade(0.1, '#d2d6de')};
     }
     &:active {
-      background: ${shade(0.5, '#d2d6de')};
+      background: ${shade(0.3, '#d2d6de')};
     }
   `,
   red: css`
@@ -48,17 +49,33 @@ const styleTypeVariants = {
   `,
 };
 
+const sizeStyle = {
+  normal: css`
+    padding: 10px 16px;
+  `,
+  small: css`
+    padding: 4px 8px;
+    font-size: 12px;
+  `,
+};
+
 export const Container = styled.button<ButtonProps>`
+  display: flex;
+  justify-content: space-around;
   border-radius: 3px;
   border: 0;
-  height: 36px;
-  padding: 0 16px;
   font-weight: 700;
   margin: 0 5px;
   transition: background 0.2s;
   ${props => styleTypeVariants[props.variant || 'default']}
+  ${props => sizeStyle[props.size || 'normal']}
 
   svg {
     margin-right: 5px;
+    font-size: 1em;
+  }
+
+  &:disabled {
+    opacity: 0.5;
   }
 `;

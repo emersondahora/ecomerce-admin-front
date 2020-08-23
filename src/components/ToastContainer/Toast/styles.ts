@@ -12,8 +12,8 @@ const toastTypeVariations = {
     color: #3172b7;
   `,
   success: css`
-    background: #e6fffa;
-    color: #2e656a;
+    background: #00a65a;
+    color: #fff;
   `,
   error: css`
     background: #fddede;
@@ -29,7 +29,7 @@ export const Container = styled(animated.div)<ToastProps>`
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
   display: flex;
 
-  ${(props) => toastTypeVariations[props.type || 'info']}
+  ${props => toastTypeVariations[props.type || 'info']}
 
   & + div {
     margin-top: 8px;
@@ -58,7 +58,7 @@ export const Container = styled(animated.div)<ToastProps>`
     background: transparent;
     color: inherit;
   }
-  ${(props) =>
+  ${props =>
     !props.hasdescription &&
     css`
       align-items: center;

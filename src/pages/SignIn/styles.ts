@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import ButtonComponent from '../../components/Button';
+import ButtonComponent from '../../components/Form/Button';
 
 export const Button = styled(ButtonComponent)`
   width: 100%;

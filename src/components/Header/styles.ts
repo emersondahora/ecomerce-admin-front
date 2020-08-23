@@ -54,6 +54,7 @@ export const Profile = styled.button`
   display: flex;
   padding: 0 20px;
   font-size: 14px;
+  z-index: 100000;
   &:hover {
     background: ${shade(0.1, '#367fa9')};
   }
@@ -71,6 +72,7 @@ export const Profile = styled.button`
 
 export const ProfileInfo = styled.div`
   position: absolute;
+  z-index: 100000;
   right: 1px;
   top: 52px;
   background: #3c8dbc;
@@ -111,4 +113,14 @@ export const ProfileInfo = styled.div`
       }
     }
   }
+`;
+
+export const ProfileInfoGlass = styled.div`
+  position: fixed;
+  z-index: 100000;
+  background: #ccc;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  opacity: 0.6;
 `;

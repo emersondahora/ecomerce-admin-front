@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { Container, Title, Content, Button } from './styles';
 
-import Input from '../../components/Input';
+import Input from '../../components/Form/Input';
 
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
